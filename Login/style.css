@@ -100,6 +100,11 @@ main{
     border: none;
     border-radius: 8px ;
     background-color: #e7f0ea;
+    outline: none;
+}
+
+.btn-container button:hover{
+    cursor:pointer;
 }
 
 .register-container{
@@ -141,4 +146,14 @@ main{
         width: 60%;
         margin: 25px 50px;
     }
+}
+
+#campo-empty{
+    width: auto;
+    text-align: center;
+    padding: 3px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
 }
