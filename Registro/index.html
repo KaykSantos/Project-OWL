@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <main>
+        <div id="container-register">
+            <div id="titles-container">
+                <h1>Cadastro</h1>
+                <h6>Faça seu cadastro</h6>
+            </div>
+            
+            <form>
+                <div id="inputs-container">
+                    <input type="number" class="input" placeholder="RM">
+                    <input type="text" class="input" placeholder="Nome">
+                    <input type="email" class="input" placeholder="E-mail">
+                    <div><input type="password" id="password1" class="input" placeholder="Senha"><img src="images/eye.png" class="img-eye" id="btn-eye1"></div>
+                    <div><input type="password" id="password2" class="input" placeholder="Confirmar a senha"><img src="images/eye.png" class="img-eye" id="btn-eye2"></div>
+                        <div id="select-container">
+                            <select name="curso" id="curso">
+                            <option value="10">Escolha seu curso: </option>
+                            <option value="1">1° ano - Médio de Desenvolvimento de Sistemas </option>
+                            <option value="2">2° ano - Médio de Desenvolvimento de Sistemas </option>
+                            <option value="3">3° ano - Médio de Desenvolvimento de Sistemas </option>
+                            <option value="4">1° ano - Programação de Jogos Digitais </option>
+                            <option value="5">2° ano - Programação de Jogos Digitais </option>
+                            <option value="6">3° ano - Programação de Jogos Digitais </option>
+                            <option value="7">1° ano - Administração </option>
+                            <option value="8">2° ano - Administração </option>
+                            <option value="9">3° ano - Administração </option>
+                            </select>
+                        </div>
+                </div>
+            </form>
+
+                <div id="btn-container">
+                    <button name="submit">Enviar</button>
+                </div>
+
+                <div id="login-container">
+                    <p>Já possui conta?</p>
+                    <a href="#">Faça Login!</a>
+                </div>
+
+        </div>
+    </main>
+    <script>
+
+            let btn1 = document.getElementById('btn-eye1');
+            btn1.addEventListener('click', function(){
+                let input = document.getElementById('password1');
+
+                if(input.getAttribute('type') == 'password') {
+                    input.setAttribute('type', 'text');
+                }else {
+                    input.setAttribute('type', 'password');
+                }
+            });
+
+        let btn2 = document.getElementById('btn-eye2');
+        btn2.addEventListener('click', function(){
+            let input = document.getElementById('password2');
+
+            if(input.getAttribute('type') == 'password') {
+                input.setAttribute('type', 'text');
+            }else {
+                input.setAttribute('type', 'password');
+            }
+        });
+    </script>
+</body>
+</html>
