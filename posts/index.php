@@ -1,5 +1,5 @@
 <?php
-    include('php/config.php');
+    include('../php/config.php');
 
     if($_POST){
         if(isset($_POST['sair'])){
@@ -37,18 +37,17 @@
                 if(isset($_SESSION['log-fin'])){
                     echo '
                         <a href="../">Home</a>
-                        <a href="/inscricoes">Inscrições</a>
+                        <a href="/interclasse">Interclasse</a>
                     ';
                 }
             ?>
-            <!-- <a href="#">Home</a>
-            <a href="/interclasse">Interclasse</a> -->
         </div>
     </header>
     <?php
         if(isset($_SESSION['adm'])){
             echo '
                     <div id="navbar">
+                        <a href="../">Home</a>
                         <a href="/new-post">New post</a>
                         <a href="/new-activity">New Activity</a>
                     </div>
@@ -56,11 +55,12 @@
         }
     ?>
     <main>
-        <form action="" method="post">
+        <!-- <form action="" method="post">
             <button name="sair">SAAAAAAAAAS</button>
-        </form>
+        </form> -->
         <?php
-            $query = 'SELECT * FROM vwPostagem ORDER BY cd DESC';
+            $cdPost = $_GET['post'];
+            $query = 'SELECT * FROM vwPostagem WHERE cd = '.$cdPost.' ORDER BY cd DESC';
             $res = $GLOBALS['conn']->query($query);
             if($res){
                 foreach($res as $row){
@@ -68,40 +68,21 @@
                     echo '
                     <div class="container-post">
                         <div class="img-post">
-                            <img src="posts/images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px"    >
+                            <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px"    >  
+                            <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>                
                         </div>
                         <div class="content-post">
                             <p class="titulo-post">'.$row['titulo'].'</p>
                             
-                            <p style="overflow: hidden; text-overflow: ellipsis; height: 220px;">
+                            <p>
                                 '.$row['conteudo'].'
                             </p>
-                            <div class="footer-post">
-                                <h4><a href="posts/?post='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
-                                <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>
-                            </div>
                         </div>
                     </div>
                     ';
                 }
             }
         ?>
-        <!-- <div class="container-post">
-            <div class="img-post">
-                <img src="/images/logo.jpg" alt="imagem teste" width="370px"    >
-            </div>
-            <div class="content-post">
-                <h1>AOBA CORNOS</h1>
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam 
-                    est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius 
-                    modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                </p>
-            </div>
-        </div> -->
     </main>
     <footer>
 

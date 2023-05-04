@@ -38,7 +38,7 @@
                 if(isset($_SESSION['log-fin'])){
                     echo '
                         <a href="../">Home</a>
-                        <a href="/inscricoes">Inscrições</a>
+                        <a href="#">Inscrições</a>
                     ';
                 }
             ?>
@@ -55,27 +55,35 @@
         }
     ?>
     <main>
-        <!-- <form action="" method="post">
-            <button name="sair">SAAAAAAAAAS</button>
-        </form> -->
-        <form method="post" enctype="multipart/form-data">
-            <div>
-                <p>Cadastrar novo Post</p>
-            </div>
-            <div>
-                <input type="text" id="titulo" name="titulo" class="input" placeholder="Título do post:">
-            </div>
-            <div>
-                <textarea name="content" id="content" class="input" cols="30" rows="5" placeholder="Conteúdo da postagem: "></textarea>
-            </div>
-            <div id="div-image">
-                <label for="image">Imagem:</label>
-                <input type="file" id="image" name="image">
-            </div>
-            <div>
-                <button name="submit">Cadastrar</button>
-            </div>
-        </form>
+        
+        <?php
+            $query = 'SELECT * FROM vwSelecao ORDER BY cd DESC';
+            $res = $GLOBALS['conn']->query($query);
+            if($res){
+                foreach($res as $row){
+                    $dt_post = date('d/m/Y',  strtotime($row['dt_post']));
+                    echo '
+                        
+                        <div class="post-interclasse">
+                            <h2>'.$row['titulo'].'</h2>
+                            <p style="overflow: hidden; text-overflow: ellipsis;">
+                            '.$row['conteudo'].'
+                            </p>
+                            <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="400px">
+                            <br>
+                            <h4><a href="selecao/?selecao='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
+                        </div>
+                    ';
+                }
+            }
+        ?>
+
+        <!-- <div class="post-interclasse">
+            <h2>Título</h2>
+            <p>Explicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonato</p>
+            <img src="../images/logo.jpg" alt="Imagem do esporte" width="200px">
+            <button name="submit-participar">Participar</button>
+        </div> -->
     </main>
     <footer>
 

@@ -9,7 +9,7 @@
     // }
     if($_POST){
         if(isset($_POST['submit'])){
-            CadastroPost($_POST['titulo'], $_POST['content'], $_FILES['image']);
+            CadastroSelecao($_POST['titulo'], $_POST['content'], $_FILES['image']);
         }
     }
 ?>
@@ -60,13 +60,13 @@
         </form> -->
         <form method="post" enctype="multipart/form-data">
             <div>
-                <p>Cadastrar novo Post</p>
+                <p>Cadastrar nova seleção</p>
             </div>
             <div>
-                <input type="text" id="titulo" name="titulo" class="input" placeholder="Título do post:">
+                <input type="text" id="titulo" name="titulo" class="input" placeholder="Título do post de seleção:">
             </div>
             <div>
-                <textarea name="content" id="content" class="input" cols="30" rows="5" placeholder="Conteúdo da postagem: "></textarea>
+                <textarea name="content" id="content" class="input" cols="30" rows="5" placeholder="Conteúdo do post de seleção: "></textarea>
             </div>
             <div id="div-image">
                 <label for="image">Imagem:</label>

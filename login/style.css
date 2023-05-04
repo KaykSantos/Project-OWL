@@ -39,28 +39,6 @@ main{
     width: 60%;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
-    position: relative;
-}
-
-#btn-voltar{
-    position: absolute;
-    right: 20px;
-    top: 1px;
-}
-
-#btn-voltar button{
-    width: 150%;
-    height: 50px;
-    border: none;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
-    border-radius: 8px ;
-    background-color: white;
-    color: black;
-    outline: none;
-}
-
-#btn-voltar button:hover{
-    cursor: pointer;
 }
 
 .title-container{
@@ -142,20 +120,6 @@ main{
 .register-container a{
     text-decoration: none;
     color: #6358DC;
-}
-
-#campo-empty{
-    width: auto;
-    text-align: center;
-    padding: 3px;
-    color: red;
-    font-size: 20px;
-    border-radius: 10px;
-}
-
-
-#btn-voltar button:hover{
-    cursor: pointer;
 }
 
 @media only screen and (max-width: 1300px){
@@ -255,7 +219,6 @@ main{
 
     .btn-container button{
         width: 80%;
-        height: 5vh;
     }
 
     .register-container{
@@ -263,13 +226,17 @@ main{
         align-items: center;
         justify-content: center;
         gap: 5px;
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 20px;
-
-    }
-
-    #campo-empty{
-        font-size: 16px;
     }
 }
 
+#campo-empty{
+    width: auto;
+    text-align: center;
+    padding: 3px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}

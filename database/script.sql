@@ -41,7 +41,7 @@ CREATE TABLE post(
     titulo VARCHAR(200),
     conteudo LONGTEXT,
     imagem VARCHAR(100),
-    diretorio VARCHAR(100),
+    -- diretorio VARCHAR(100),
     dt_post DATE,
     autor INT,
     FOREIGN KEY (autor) REFERENCES adm (cd)
@@ -52,3 +52,27 @@ CREATE VIEW vwPostagem AS
     a.nm_adm AS nm_adm, a.email_adm AS email_adm
         FROM post p, adm a
             WHERE p.autor = a.cd;
+
+CREATE TABLE selecao(
+    cd INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(130),
+    conteudo LONGTEXT,
+    imagem VARCHAR(100),
+    dt_post DATE,
+    autor INT,
+    FOREIGN KEY (autor) REFERENCES adm (cd)
+);
+
+CREATE TABLE selecao_aluno(
+    cd INT PRIMARY KEY AUTO_INCREMENT,
+    id_selecao INT,
+    id_aluno INT,
+    FOREIGN KEY (id_selecao) REFERENCES selecao (cd),
+    FOREIGN KEY (id_aluno) REFERENCES aluno (rm)
+);
+
+CREATE VIEW vwSelecao AS 
+    SELECT s.cd AS cd, s.titulo AS titulo, s.conteudo AS conteudo, s.imagem AS imagem, s.dt_post AS dt_post, s.autor AS id_autor, 
+    a.nm_adm AS nm_adm, a.email_adm AS email_adm
+        FROM selecao s, adm a
+            WHERE s.autor = a.cd;

@@ -72,7 +72,7 @@ function CadastroPost($titulo, $conteudo, $imagem){
 
     if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$imagem['name'])){
 
-        $query = 'INSERT INTO post VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$imagem['name'].'", "", CURDATE(), '.$_SESSION['userID'].')';
+        $query = 'INSERT INTO post VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$imagem['name'].'", CURDATE(), '.$_SESSION['userID'].')';
         $res = $GLOBALS['conn']->query($query);
         if($res){
             echo 'Post realizado com sucesso!';
@@ -83,13 +83,20 @@ function CadastroPost($titulo, $conteudo, $imagem){
         echo 'Erro ao upar imagem! '.$GLOBALS['conn']->error;
     }
 }
-// CREATE TABLE post(
-//     cd INT PRIMARY KEY AUTO_INCREMENT,
-//     titulo VARCHAR(200),
-//     conteudo LONGTEXT,
-//     imagem VARCHAR(100),
-//     diretorio VARCHAR(100),
-//     dt_post DATE,
-//     autor INT,
-//     FOREIGN KEY (autor) REFERENCES adm (cd)
-// );
+
+function CadastroSelecao($titulo, $conteudo, $imagem){
+    $dir = '../inscricoes/images';
+
+    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$imagem['name'])){
+
+        $query = 'INSERT INTO selecao VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$imagem['name'].'", CURDATE(), '.$_SESSION['userID'].')';
+        $res = $GLOBALS['conn']->query($query);
+        if($res){
+            echo 'Postagem de seleção realizado com sucesso!';
+        }else{  
+            echo 'Erro ao cadastrar seleção!'.$GLOBALS['conn']->error;
+        }
+    }else{
+        echo 'Erro ao upar imagem! '.$GLOBALS['conn']->error;
+    }
+}

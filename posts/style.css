@@ -71,9 +71,10 @@ header div a:hover{
 
 main{
     /* background-color: red; */
-    /* height: 83.5vh; */
+    height: calc(100vh - 210px);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -87,9 +88,9 @@ footer{
     align-items: center;
 }
 
-form{
-    width: 40vw;
-    height: 400px;
+.container-post{
+    width:50vw;
+    height: auto;
     margin: 30px 0px;
     border-radius: 10px;
     /* border: 1px solid black; */
@@ -97,47 +98,17 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around; 
-    padding: 10px;
-}
-
-form div{
-    width: 80%;
-}
-
-form input{
-    /* border: none; */
-    outline: none;
-    background-color: white;
-    height: 35px;
-    width: 100%;
-    padding: 5px;
-}
-
-form textarea{
-    width: 100%;
-    padding: 5px;
-    resize: none;
-}
-
-form div p{
-    font-size: 20px;
-
-}
-
-form #div-image{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
+    justify-content: space-between;
+    padding: 20px 0px;
+}   
 
 .content-post{
-    width: 60%;
-    height: 94%;
-    margin: 0.5% 3%;
     text-align: justify;
-    word-wrap: break-word;
-    /* overflow: hidden; */
-    
-} 
+    width: 80%;
+    margin: 20px 0px;
+}
+
+.content-post .titulo-post{
+    font-weight: bolder;
+    font-size: 20px;
+}
