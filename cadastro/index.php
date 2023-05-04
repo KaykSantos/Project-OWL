@@ -22,6 +22,9 @@
 <body>
     <main>
         <div id="container-register">
+            <div id="btn-voltar">
+                <button name="submit">Voltar</button>
+            </div>
             <div id="titles-container">
                 <h1>Cadastro</h1>
                 <h6>Faça seu cadastro</h6>
@@ -32,8 +35,8 @@
                     <input type="number" name="rm" class="input" placeholder="RM">
                     <input type="text" name="name" class="input" placeholder="Nome">
                     <input type="email" name="email" class="input" placeholder="E-mail">
-                    <div><input type="password" id="password1" class="input" placeholder="Senha" name="password"><img src="../images/eye.png" class="img-eye" id="btn-eye1"></div>
-                    <div><input type="password" id="password2" class="input" placeholder="Confirmar a senha"    ><img src="../images/eye.png" class="img-eye" id="btn-eye2"></div>
+                    <div class="bg-eye"><input type="password" id="password1" class="input" placeholder="Senha" name="password"><img src="../images/eye.png" class="img-eye" id="btn-eye1"></div>
+                    <div class="bg-eye"><input type="password" id="password2" class="input" placeholder="Confirmar a senha"    ><img src="../images/eye.png" class="img-eye" id="btn-eye2"></div>
                     <div id="select-container">
                         <select name="curso" id="curso" name="curso">
                         <option value="10">Escolha seu curso: </option>
@@ -60,7 +63,7 @@
             <?php
                 if(isset($_SESSION['cad-effect'])):
             ?>   
-            <div id="error-cad">
+            <div id="sucesso-cad" class="font-size-msg">
                 <p>Cadastro realizado com sucesso! Agora realize seu login.</p>
             </div>
             <?php
@@ -71,7 +74,7 @@
             <?php
                 if(isset($_SESSION['email-error'])):
             ?>   
-            <div id="error-email">
+            <div id="error-email" class="font-size-msg">
                     <p>Email já cadastrado, tente utilizar outro ou faça login!</p>
             </div>
             <?php
@@ -82,8 +85,8 @@
             <?php
                 if(isset($_SESSION['cad-error'])):
             ?>   
-            <div id="error-cad">
-                <p>Erro ao realizar cadasatro, tente novamente!</p>
+            <div id="error-cad" class="font-size-msg">
+                <p>Erro ao realizar cadastro, tente novamente!</p>
             </div>
             <?php
                 endif;

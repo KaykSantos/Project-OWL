@@ -28,7 +28,9 @@
 
         <div class="right-main">
             <div class="container">
-
+                <div id="btn-voltar">
+                    <button name="submit">Voltar</button>
+                </div>
                <header>
                    <div class="title-container">
                        <h1>Login</h1>
@@ -64,8 +66,6 @@
                     endif;
                     unset($_SESSION['campo-vazio']);
                 ?>
-                <div> asdasd
-                </div>
             </div>
             
         </div>
