@@ -23,7 +23,7 @@
 <body>
     <main>
         <div class="left-main">
-            <img src="../images/logo.jpg" class="img-logo" alt="Logo do Grupo">
+            <img src="../images/logo2.png" class="img-logo" alt="Logo do Grupo">
         </div>
 
         <div class="right-main">
@@ -64,7 +64,10 @@
                     endif;
                     unset($_SESSION['campo-vazio']);
                 ?>
+                <div> asdasd
+                </div>
             </div>
+            
         </div>
     </main>
     <script>
@@ -77,6 +80,7 @@
             }else {
                 input.setAttribute('type', 'password');
             }
+
         });
     </script>
 </body>
