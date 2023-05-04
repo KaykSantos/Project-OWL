@@ -1,3 +1,13 @@
+<?php
+    include('php/config.php');
+
+    if($_POST){
+        if(isset($_POST['sair'])){
+            session_destroy();
+            header('Location: ../');
+        }        
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,16 +18,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header id="header">
         <div id="logotipo">
             <p>OWL</p>
         </div>
         <div id="options">
-            <a href="/login/">Login</a>
-            <a href="/cadastro">Cadastro</a>
+            <?php 
+                if(!isset($_SESSION['log-fin'])){
+                    echo '
+                        <a href="/login/">Login</a>
+                        <a href="/cadastro/">Cadastro</a>
+                    ';
+                }
+            ?>
         </div>
     </header>
+    <?php
+        if(isset($_SESSION['adm'])){
+            echo '
+                    <div id="navbar">
+                        <a href="/new-post">New post</a>
+                    </div>
+                ';
+        }
+    ?>
     <main>
+        <!-- <form action="" method="post">
+            <button name="sair">SAAAAAAAAAS</button>
+        </form> -->
         <div class="container-post">
             <div class="img-post">
                 <img src="/images/logo.jpg" alt="imagem teste" width="370px"    >
@@ -30,10 +58,7 @@
                     dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
                     sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam 
                     est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius 
-                    modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
-                    quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-                    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                    modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
                 </p>
             </div>
         </div>
@@ -49,28 +74,7 @@
                     dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
                     sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam 
                     est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius 
-                    modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
-                    quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-                    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                </p>
-            </div>
-        </div><div class="container-post">
-            <div class="img-post">
-                <img src="/images/logo.jpg" alt="imagem teste" width="370px"    >
-            </div>
-            <div class="content-post">
-                <h1>AOBA CORNOS</h1>
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam 
-                    est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius 
-                    modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
-                    quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-                    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                    modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
                 </p>
             </div>
         </div>
@@ -78,8 +82,5 @@
     <footer>
 
     </footer>
-    <script>
-        
-    </script>
 </body>
 </html>

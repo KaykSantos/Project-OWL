@@ -10,22 +10,23 @@ $conn = mysqli_connect(HOST, USUARIO, SENHA, DB) or die ('Não foi possível con
 //CRUD de usuário -> Aluno
 function LoginUser($email, $password){
     $hash = md5($password);
-    $query = 'SELECT * FROM adm WHERE email_adm = "'.$email.'" AND senha = "'.$hash.'"'; //Mudar a váriavel password para hash após criar a function de cadastro com md5
+    $query = 'SELECT * FROM adm WHERE email_adm = "'.$email.'" AND senha = "'.$hash.'"'; 
     $res = $GLOBALS['conn']->query($query);
     $row = mysqli_num_rows($res);
     if($row == 1){
-        header('Location: ../');
         $_SESSION['adm'] = true;
+        $_SESSION['log-fin'] = true;
+        header('Location: ../');
     }else{
-        $query = 'SELECT * FROM aluno WHERE email_aluno = "'.$email.'" AND senha = "'.$hash.'"'; //Mudar a váriavel password para hash após criar a function de cadastro com md5
+        $query = 'SELECT * FROM aluno WHERE email_aluno = "'.$email.'" AND senha = "'.$hash.'"';
         $res = $GLOBALS['conn']->query($query);
         $row = mysqli_num_rows($res);
         if($row == 1){
-            header('Location: ../');
             $_SESSION['aluno'] = true;
             $_SESSION['log-fin'] = true;
             $_SESSION['log-effect'] = true;
             $_SESSION['log-error'] = false;
+            header('Location: ../');
         }else{
             echo 'Email e/ou senha inválidos! Verifique e tente novamente.';
             $_SESSION['log-effect'] = false;
@@ -60,7 +61,4 @@ function CadastroUser($rm, $name, $email, $password, $curso){
             }
         }
     }
-
-    
-
 }
