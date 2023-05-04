@@ -19,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
 <body>
     <header id="header">
@@ -64,10 +64,15 @@
                         </div>
                         <div class="content-post">
                             <h1>'.$row['titulo'].'</h1>
-                            <p>
+                            
+                            <p style="overflow: hidden; text-overflow: ellipsis; height: 200px;">
                                 '.$row['conteudo'].'
                             </p>
-                            <h3>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h3>
+                            <div class="footer-post">
+                                <h4><a href="'.$row['cd'].'" class="more-post">Ver mais...</a></h4>
+                                <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>
+                            </div>
+                            
                         </div>
                     </div>
                     ';

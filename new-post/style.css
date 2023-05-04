@@ -131,22 +131,13 @@ form #div-image{
     align-items: center;
 }
 
-/*
-form input[placeholder]{
-    padding: 0px 25px;
-} */
-
-/* .img-post{
-    width: 30%;
-    height: 94%;
-    background-color: red;
-    margin: 0.5% 3%;
-} */
 
 .content-post{
     width: 60%;
     height: 94%;
     margin: 0.5% 3%;
     text-align: justify;
-    /* background-color: blue; */
+    word-wrap: break-word;
+    /* overflow: hidden; */
+    
 } 
