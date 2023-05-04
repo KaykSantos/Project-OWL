@@ -13,9 +13,9 @@ body{
 }
 
 header{
-    height: 80px;
     width: 100%;
-    background-color: black;
+    height: 80px;
+    background-color: #000000e8;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -71,48 +71,70 @@ header div a:hover{
 
 main{
     /* background-color: red; */
-    /* height: 83.5vh; */
+    padding: 30px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
 }
 
 footer{
     height: 80px;
     width: 100%;
-    background-color: black;
+    background-color: #000000e8;
+    color: white;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
+footer h2{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+footer .icon-contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .container-post{
-    width: 70vw;
-    height: 300px;
-    margin: 30px 0px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
     border-radius: 10px;
     /* border: 1px solid black; */
-    box-shadow: 0px 2px 10px #000000;
+    box-shadow: 0px 0px 4px #0f0f0f41;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 .img-post{
     width: 30%;
-    height: 94%;
-    /* background-color: red; */
-    margin: 0.5% 3%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content-post{
     width: 60%;
-    height: 94%;
+    height: auto;
     margin: 0.5% 3%;
     text-align: justify;
-    /* background-color: blue; */
+}
+
+.container-post h1{
+    margin-bottom: 15px;
+}
+
+.container-post p{
+    margin-bottom: 15px;
 }
 
 .footer-post{
@@ -129,4 +151,73 @@ footer{
 
 .more-post:hover{
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1800px){
+    .img-post img{
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 1400px){
+    .img-post img{
+        width: 250px;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+
+    .img-post img{
+        width: 350px;
+        height: 150px;
+    }
+
+    .container-post{
+        height: auto;
+        margin: 30px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-post .content-post{
+        text-align: center;
+    }
+
+    .container-post .footer-post{
+        font-size: 12px;
+    }
+
+    .content-post{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .img-post img{
+        width: 350px;
+        height: 150px;
+        margin: 0;
+    }
+
+    .container-post{
+        width: 90vw;
+        height: auto;
+    }
+
+    .container-post .footer-post{
+        font-size: 10px;
+    }
+
+    .content-post{
+        width: 100%;
+        font-size: 11pt;
+    }
+
+    .content-post p{
+        width: 100%;
+    }
 }

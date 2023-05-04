@@ -60,12 +60,12 @@
                     echo '
                     <div class="container-post">
                         <div class="img-post">
-                            <img src="posts/images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px"    >
+                            <img src="posts/images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px" " height="250px" "    >
                         </div>
                         <div class="content-post">
                             <h1>'.$row['titulo'].'</h1>
                             
-                            <p style="overflow: hidden; text-overflow: ellipsis; height: 200px;">
+                            <p style="overflow: hidden; text-overflow: ellipsis;">
                                 '.$row['conteudo'].'
                             </p>
                             <div class="footer-post">
@@ -97,7 +97,14 @@
         </div> -->
     </main>
     <footer>
+            <h2>
+            © 2023 The OWL Company, all rights reserved.
+            </h2>
 
+            <div class="icon-contact">
+                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="images/instagram.png" width="40px"></a> 
+                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="images/gmail.png" width="60px"></a> 
+            </div>
     </footer>
 </body>
 </html>
