@@ -1,11 +1,16 @@
 <?php
     include('../php/config.php');
 
+    // if($_POST){
+    //     if(isset($_POST['sair'])){
+    //         session_destroy();
+    //         header('Location: ../');
+    //     }        
+    // }
     if($_POST){
-        if(isset($_POST['sair'])){
-            session_destroy();
-            header('Location: ../');
-        }        
+        if(isset($_POST['submit'])){
+            CadastroPost($_POST['titulo'], $_POST['content'], $_FILES['image']);
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -47,7 +52,7 @@
         <!-- <form action="" method="post">
             <button name="sair">SAAAAAAAAAS</button>
         </form> -->
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div>
                 <p>Cadastrar novo Post</p>
             </div>

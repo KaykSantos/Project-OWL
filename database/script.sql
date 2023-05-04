@@ -41,7 +41,14 @@ CREATE TABLE post(
     titulo VARCHAR(200),
     conteudo LONGTEXT,
     imagem VARCHAR(100),
+    diretorio VARCHAR(100),
+    dt_post DATE,
     autor INT,
-    FOREIGN KEY (autor) REFERENCES adm (cd),
-    diretorio VARCHAR(100)
+    FOREIGN KEY (autor) REFERENCES adm (cd)
 );
+
+CREATE VIEW vwPostagem AS 
+    SELECT p.cd AS cd, p.titulo AS titulo, p.conteudo AS conteudo, p.imagem AS imagem, p.diretorio AS diretorio, p.dt_post AS dt_post, p.autor AS id_autor, 
+    a.nm_adm AS nm_adm, a.email_adm AS email_adm
+        FROM post p, adm a
+            WHERE p.autor = a.cd;

@@ -15,6 +15,8 @@ function LoginUser($email, $password){
     $row = mysqli_num_rows($res);
     if($row == 1){
         $_SESSION['adm'] = true;
+        $user = mysqli_fetch_assoc($res);
+        $_SESSION['userID'] = $user['cd'];
         $_SESSION['log-fin'] = true;
         header('Location: ../');
     }else{
@@ -23,6 +25,8 @@ function LoginUser($email, $password){
         $row = mysqli_num_rows($res);
         if($row == 1){
             $_SESSION['aluno'] = true;
+            $user = mysqli_fetch_assoc($res);
+            $_SESSION['userID'] = $user['cd'];
             $_SESSION['log-fin'] = true;
             $_SESSION['log-effect'] = true;
             $_SESSION['log-error'] = false;
@@ -62,3 +66,30 @@ function CadastroUser($rm, $name, $email, $password, $curso){
         }
     }
 }
+
+function CadastroPost($titulo, $conteudo, $imagem){
+    $dir = '../posts/images';
+
+    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$imagem['name'])){
+
+        $query = 'INSERT INTO post VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$imagem['name'].'", "", CURDATE(), '.$_SESSION['userID'].')';
+        $res = $GLOBALS['conn']->query($query);
+        if($res){
+            echo 'Post realizado com sucesso!';
+        }else{  
+            echo 'Erro ao cadastrar post!'.$GLOBALS['conn']->error;
+        }
+    }else{
+        echo 'Erro ao upar imagem! '.$GLOBALS['conn']->error;
+    }
+}
+// CREATE TABLE post(
+//     cd INT PRIMARY KEY AUTO_INCREMENT,
+//     titulo VARCHAR(200),
+//     conteudo LONGTEXT,
+//     imagem VARCHAR(100),
+//     diretorio VARCHAR(100),
+//     dt_post DATE,
+//     autor INT,
+//     FOREIGN KEY (autor) REFERENCES adm (cd)
+// );
