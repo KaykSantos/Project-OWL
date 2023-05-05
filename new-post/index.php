@@ -71,7 +71,14 @@
         </form>
     </main>
     <footer>
+            <h2>
+            © 2023 The OWL Company, all rights reserved.
+            </h2>
 
+            <div class="icon-contact">
+                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="../images/instagram.png" id="ins-img"></a> 
+                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="../images/gmail.png" id="gmail-img"></a> 
+            </div>
     </footer>
 </body>
 </html>

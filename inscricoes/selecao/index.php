@@ -1,17 +1,5 @@
 <?php
     include('../../php/config.php');
-
-    // if($_POST){
-    //     if(isset($_POST['sair'])){
-    //         session_destroy();
-    //         header('Location: ../');
-    //     }        
-    // }
-    if($_POST){
-        if(isset($_POST['submit'])){
-            CadastroPost($_POST['titulo'], $_POST['content'], $_FILES['image']);
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -69,11 +57,23 @@
                                 '.$row['conteudo'].'
                                 </p>
                                 <img src="../images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="400px">
+                                
+                        ';
+                        $query = 'SELECT * FROM selecao_aluno WHERE id_selecao = '.$selecao.' AND id_aluno = '.$_SESSION['userID'];
+                        $res = $GLOBALS['conn']->query($query);
+                        $row = mysqli_num_rows($res);
+                        if($row == 0){                   
+                            echo '  
                                 <div id="btns">
                                     <button onclick="ConfirmarParticipacao()" id="btn-participar">Participar</button>
-                                    <a href="part.php?aluno='.$row['cd'].'"><button name="submit-participar" id="btn-confirm">Confirmar</button></a>
+                                    <a href="part.php?aluno='.$_SESSION['userID'].'&selecao='.$selecao.'"><button name="submit-participar" id="btn-confirm">Confirmar</button></a>
                                     <button name="cancelar" id="btn-cancelar" onclick="CancelarParticipacao()">Cancelar</button>
                                 </div>
+                                ';
+                        }else{
+                            echo '<h4>Você já está inscrito!</h4>';
+                        }             
+                    echo '  
                             </div>    
                         ';
                 }
@@ -82,7 +82,14 @@
 
     </main>
     <footer>
+            <h2>
+            © 2023 The OWL Company, all rights reserved.
+            </h2>
 
+            <div class="icon-contact">
+                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="../../images/instagram.png" id="ins-img"></a> 
+                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="../../images/gmail.png" id="gmail-img"></a> 
+            </div>
     </footer>
     <script>
         let btn1 = document.getElementById('btn-confirm');

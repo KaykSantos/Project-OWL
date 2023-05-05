@@ -9,7 +9,7 @@
     // }
     if($_POST){
         if(isset($_POST['submit'])){
-            CadastroSelecao($_POST['titulo'], $_POST['content'], $_FILES['image']);
+            CadastroPost($_POST['titulo'], $_POST['content'], $_FILES['image']);
         }
     }
 ?>
@@ -38,7 +38,7 @@
                 if(isset($_SESSION['log-fin'])){
                     echo '
                         <a href="../">Home</a>
-                        <a href="/inscricoes">Inscrições</a>
+                        <a href="../inscricoes/index.php">Inscrições</a>
                     ';
                 }
             ?>
@@ -55,27 +55,26 @@
         }
     ?>
     <main>
-        <!-- <form action="" method="post">
-            <button name="sair">SAAAAAAAAAS</button>
-        </form> -->
-        <form method="post" enctype="multipart/form-data">
-            <div>
-                <p>Cadastrar nova seleção</p>
-            </div>
-            <div>
-                <input type="text" id="titulo" name="titulo" class="input" placeholder="Título do post de seleção:">
-            </div>
-            <div>
-                <textarea name="content" id="content" class="input" cols="30" rows="5" placeholder="Conteúdo do post de seleção: "></textarea>
-            </div>
-            <div id="div-image">
-                <label for="image">Imagem:</label>
-                <input type="file" id="image" name="image">
-            </div>
-            <div>
-                <button name="submit">Cadastrar</button>
-            </div>
-        </form>
+        <div class="post-interclasse">
+            <ul>
+            <?php
+                if($_GET){
+                    if(isset($_GET['selecao'])){
+                        $selecaoID = $_GET['selecao'];
+                        $query = 'SELECT * FROM vwselecaoaluno WHERE id_selecao = '.$selecaoID.' ORDER BY id_aluno ASC';
+                        $res = $GLOBALS['conn']->query($query);
+                        if($res){
+                            foreach($res as $row){
+                                echo '
+                                    <li>RM: '.$row['id_aluno'].' - Nome: '.$row['nm_aluno'].'</li>
+                                ';
+                            }
+                        }
+                    }
+                }
+                
+            ?></ul>
+        </div>
     </main>
     <footer>
             <h2>

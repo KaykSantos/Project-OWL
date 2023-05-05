@@ -37,7 +37,7 @@
                 if(isset($_SESSION['log-fin'])){
                     echo '
                         <a href="../">Home</a>
-                        <a href="/interclasse">Interclasse</a>
+                        <a href="/inscricoes">Inscrições</a>
                     ';
                 }
             ?>
@@ -59,33 +59,43 @@
             <button name="sair">SAAAAAAAAAS</button>
         </form> -->
         <?php
-            $cdPost = $_GET['post'];
-            $query = 'SELECT * FROM vwPostagem WHERE cd = '.$cdPost.' ORDER BY cd DESC';
-            $res = $GLOBALS['conn']->query($query);
-            if($res){
-                foreach($res as $row){
-                    $dt_post = date('d/m/Y',  strtotime($row['dt_post']));
-                    echo '
-                    <div class="container-post">
-                        <div class="img-post">
-                            <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px"    >  
-                            <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>                
+            if($_GET){
+                $cdPost = $_GET['post'];
+                $query = 'SELECT * FROM vwPostagem WHERE cd = '.$cdPost.' ORDER BY cd DESC';
+                $res = $GLOBALS['conn']->query($query);
+                if($res){
+                    foreach($res as $row){
+                        $dt_post = date('d/m/Y',  strtotime($row['dt_post']));
+                        echo '
+                        <div class="container-post">
+                            <div class="img-post">
+                                <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px"    >  
+                                <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>                
+                            </div>
+                            <div class="content-post">
+                                <p class="titulo-post">'.$row['titulo'].'</p>
+                                
+                                <p>
+                                    '.$row['conteudo'].'
+                                </p>
+                            </div>
                         </div>
-                        <div class="content-post">
-                            <p class="titulo-post">'.$row['titulo'].'</p>
-                            
-                            <p>
-                                '.$row['conteudo'].'
-                            </p>
-                        </div>
-                    </div>
-                    ';
+                        ';
+                    }
                 }
             }
+            
         ?>
     </main>
     <footer>
+            <h2>
+            © 2023 The OWL Company, all rights reserved.
+            </h2>
 
+            <div class="icon-contact">
+                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="../images/instagram.png" id="ins-img"></a> 
+                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="../images/gmail.png" id="gmail-img"></a> 
+            </div>
     </footer>
 </body>
 </html>

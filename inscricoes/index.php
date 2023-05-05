@@ -72,8 +72,16 @@
                             <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="400px">
                             <br>
                             <h4><a href="selecao/?selecao='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
-                        </div>
                     ';
+                    if(isset($_SESSION['adm'])){
+                        echo '
+                                    <h4><a href="../list-selecao/?selecao='.$row['cd'].'" class="more-post">Ver inscritos</a></h4>
+                                    <h4><a href="../edit/?selecao='.$row['cd'].'" class="more-post">Editar seleção</a></h4>
+                                </div>
+                            ';
+                    }else{
+                        echo '</div>';
+                    }
                 }
             }
         ?>
@@ -86,7 +94,14 @@
         </div> -->
     </main>
     <footer>
+            <h2>
+            © 2023 The OWL Company, all rights reserved.
+            </h2>
 
+            <div class="icon-contact">
+                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="../images/instagram.png" id="ins-img" width="40px"></a> 
+                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="../images/gmail.png" id="gmail-img" width="60px"></a> 
+            </div>
     </footer>
 </body>
 </html>

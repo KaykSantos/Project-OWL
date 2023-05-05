@@ -23,7 +23,7 @@
     <main>
         <div id="container-register">
             <div id="btn-voltar">
-                <button name="submit">Voltar</button>
+                <a href="../" id="style-btn">Voltar</a>
             </div>
             <div id="titles-container">
                 <h1>Cadastro</h1>

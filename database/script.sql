@@ -78,3 +78,8 @@ CREATE VIEW vwSelecao AS
             WHERE s.autor = a.cd;
 
 INSERT INTO adm VALUES (null, "admin", "admin@admin", md5("admin"));
+
+CREATE VIEW vwSelecaoAluno AS   
+    SELECT sa.id_aluno AS id_aluno, sa.id_selecao AS id_selecao, a.nm_aluno AS nm_aluno
+        FROM selecao_aluno sa, aluno a
+            WHERE sa.id_aluno = a.rm;

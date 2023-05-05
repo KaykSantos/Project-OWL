@@ -51,10 +51,10 @@
     ?>
     <main>
         <!-- <form action="" method="post">
-            <button name="sair">SAAAAAAAAAS</button>
+            <button name="sair">Sair</button>
         </form> -->
         <?php
-            $query = 'SELECT * FROM vwPostagem';;
+            $query = 'SELECT * FROM vwPostagem ORDER BY cd DESC';;
             $res = $GLOBALS['conn']->query($query);
             if($res){
                 foreach($res as $row){
@@ -72,9 +72,15 @@
                             </p>
                             <div class="footer-post">
                                 <h4><a href="posts/?post='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
+                        ';
+                        if(isset($_SESSION['adm'])){
+                            echo '
+                                    <h4><a href="edit/?post='.$row['cd'].'" class="more-post">Editar post</a></h4>
+                                ';
+                        }
+                    echo '            
                                 <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>
                             </div>
-                            
                         </div>
                     </div>
                     ';
@@ -88,8 +94,8 @@
             </h2>
 
             <div class="icon-contact">
-                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="images/instagram.png" width="40px"></a> 
-                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="images/gmail.png" width="60px"></a> 
+                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="images/instagram.png" id="ins-img"></a> 
+                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="images/gmail.png" id="gmail-img"></a> 
             </div>
     </footer>
 </body>

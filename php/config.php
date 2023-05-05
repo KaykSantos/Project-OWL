@@ -26,7 +26,7 @@ function LoginUser($email, $password){
         if($row == 1){
             $_SESSION['aluno'] = true;
             $user = mysqli_fetch_assoc($res);
-            $_SESSION['userID'] = $user['cd'];
+            $_SESSION['userID'] = $user['rm'];
             $_SESSION['log-fin'] = true;
             $_SESSION['log-effect'] = true;
             $_SESSION['log-error'] = false;
@@ -68,11 +68,15 @@ function CadastroUser($rm, $name, $email, $password, $curso){
 }
 
 function CadastroPost($titulo, $conteudo, $imagem){
+    $query = 'SELECT cd FROM post ORDER BY cd DESC LIMIT 0, 1';
+    $res = $GLOBALS['conn']->query($query); 
+    $post = mysqli_fetch_assoc($res);
+    $cd = $post['cd']+1;
+
     $dir = '../posts/images';
+    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$cd)){
 
-    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$imagem['name'])){
-
-        $query = 'INSERT INTO post VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$imagem['name'].'", CURDATE(), '.$_SESSION['userID'].')';
+        $query = 'INSERT INTO post VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$cd.'", CURDATE(), '.$_SESSION['userID'].')';
         $res = $GLOBALS['conn']->query($query);
         if($res){
             echo 'Post realizado com sucesso!';
@@ -85,11 +89,15 @@ function CadastroPost($titulo, $conteudo, $imagem){
 }
 
 function CadastroSelecao($titulo, $conteudo, $imagem){
+    $query = 'SELECT cd FROM selecao ORDER BY cd DESC LIMIT 0, 1';
+    $res = $GLOBALS['conn']->query($query); 
+    $post = mysqli_fetch_assoc($res);
+    $cd = $post['cd']+1;
+
     $dir = '../inscricoes/images';
+    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$cd)){
 
-    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$imagem['name'])){
-
-        $query = 'INSERT INTO selecao VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$imagem['name'].'", CURDATE(), '.$_SESSION['userID'].')';
+        $query = 'INSERT INTO selecao VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$cd.'", CURDATE(), '.$_SESSION['userID'].')';
         $res = $GLOBALS['conn']->query($query);
         if($res){
             echo 'Postagem de seleção realizado com sucesso!';
@@ -98,5 +106,26 @@ function CadastroSelecao($titulo, $conteudo, $imagem){
         }
     }else{
         echo 'Erro ao upar imagem! '.$GLOBALS['conn']->error;
+    }
+}
+
+function EditarPubli($type, $cd, $titulo, $conteudo){
+    // echo $type;
+    if($type == "post"){
+        $query = 'UPDATE post SET titulo = "'.$titulo.'", conteudo = "'.$conteudo.'" WHERE cd = '.$cd;
+        $res = $GLOBALS['conn']->query($query);
+        if($res){
+            echo "Post editado com sucesso!";
+        }else{
+            echo "Erro ao editar post!";
+        }
+    }else{
+        $query = 'UPDATE selecao SET titulo = "'.$titulo.'", conteudo = "'.$conteudo.'" WHERE cd = '.$cd;
+        $res = $GLOBALS['conn']->query($query);
+        if($res){
+            echo "Seleção editada com sucesso!";
+        }else{
+            echo "Erro ao editar seleção!";
+        }
     }
 }

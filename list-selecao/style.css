@@ -69,13 +69,15 @@ header div a:hover{
     background-color: rgb(61, 58, 58);
 }
 
-main{   
+main{
     /* background-color: red; */
-    height: calc(100vh - 210px );
+    padding: 30px;
+    height: calc(100vh - 210px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 40px;
+    /* position: relative; */;
 }
 
 footer{
@@ -89,7 +91,6 @@ footer{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    /* bottom:-800px; */
 }
 
 footer h2{
@@ -102,67 +103,36 @@ footer .icon-contact{
     align-items: center;
     justify-content: center;
 }
-
-.icon-contact #ins-img{
-    width: 40px;
-}
-
-.icon-contact #gmail-img{
-    width: 60px;
-}
-
-form{
+.post-interclasse{
     width: 40vw;
-    height: 400px;
+    height: auto;
     margin: 30px 0px;
     border-radius: 10px;
     /* border: 1px solid black; */
     box-shadow: 0px 0px 4px #0f0f0f41;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around; 
+    align-items: flex-start;
     padding: 10px;
-}
-
-form div{
-    width: 80%;
-}
-
-form input{
-    /* border: none; */
-    outline: none;
-    background-color: white;
-    height: 35px;
-    width: 100%;
-    padding: 5px;
-}
-
-form textarea{
-    width: 100%;
-    padding: 5px;
-    resize: none;
-    outline: none;
-}
-
-form div p{
-    font-size: 20px;
-
-}
-
-#div-image{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-
-.content-post{
-    width: 60%;
-    height: 94%;
-    margin: 0.5% 3%;
     text-align: justify;
-    word-wrap: break-word;
-    /* overflow: hidden; */
-    
-} 
+    padding: 20px 20px
+}
+
+.post-interclasse p{
+    height: 100px;
+}
+
+.post-interclasse ul{
+    list-style: none;
+}
+
+#titulo-page{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.btn-participar{
+    width: 100px;
+    height: 20px;
+    text-decoration: none;
+}

@@ -29,7 +29,7 @@
         <div class="right-main">
             <div class="container">
                 <div id="btn-voltar">
-                    <button name="submit">Voltar</button>
+                    <a href="../" id="style-btn">Voltar</a>
                 </div>
                <header>
                    <div class="title-container">
