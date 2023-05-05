@@ -41,7 +41,6 @@ CREATE TABLE post(
     titulo VARCHAR(200),
     conteudo LONGTEXT,
     imagem VARCHAR(100),
-    -- diretorio VARCHAR(100),
     dt_post DATE,
     autor INT,
     FOREIGN KEY (autor) REFERENCES adm (cd)
@@ -83,3 +82,13 @@ CREATE VIEW vwSelecaoAluno AS
     SELECT sa.id_aluno AS id_aluno, sa.id_selecao AS id_selecao, a.nm_aluno AS nm_aluno
         FROM selecao_aluno sa, aluno a
             WHERE sa.id_aluno = a.rm;
+
+INSERT INTO post VALUES 
+(1, "Novo site para Etec de Peruíbe", "A Etec de Peruíbe é conhecida por oferecer uma educação de alta qualidade para seus estudantes e, além disso, por promover atividades extracurriculares que auxiliam no desenvolvimento dos alunos. Entre essas atividades, os jogos escolares (interclasse) são uma das mais populares. No entanto, organizar esses jogos pode ser uma tarefa desafiadora. É preciso coordenar horários, definir as modalidades esportivas, escolher os times, criar tabelas de jogos e muito mais. Pensando em tornar esse processo mais fácil e eficiente, a Etec de Peruíbe lançou um novo site de organização de jogos escolares.", "1.jpeg", CURDATE(), 1),
+(2, "Os Jogos Escolares (JEESP) estão chegando!", "A chegada dos Jogos Escolares do Estado de São Paulo é sempre um momento de grande expectativa para os estudantes e para toda a comunidade escolar. O clima de competição saudável e o espírito de união entre os participantes fazem dos jogos um evento único e especial, que reforça a importância do esporte e da educação na formação dos jovens. Que venham os jogos escolares e que a união e o respeito prevaleçam durante toda a competição!", "2.jpeg", CURDATE(), 1),
+(3, "Vem aí o campeonato de E-Sports", "A Etec de Peruíbe tem uma novidade emocionante para os estudantes aficionados por jogos eletrônicos: a chegada do campeonato de E-Sports, com jogos como LoL (League of Legends) e Valorant. O evento promete reunir jovens apaixonados por games e que desejam competir e demonstrar suas habilidades e estratégias no mundo dos jogos virtuais. O campeonato de E-Sports na Etec de Peruíbe tem como objetivo não apenas promover a competição, mas também estimular o trabalho em equipe, o desenvolvimento da criatividade, o pensamento estratégico e o raciocínio rápido dos estudantes. Essas habilidades são importantes para a vida acadêmica e profissional dos jovens, e podem ser aprimoradas através da prática dos jogos eletrônicos.", "3.jpeg", CURDATE(), 1);
+
+INSERT INTO selecao VALUES
+(1, "Inscrições para o time de futsal", "Estão abertas as inscrições para os times de futsal que jogaram no interclasse que ocorrerá em em Junho, durante duas semanas, dos dias 5 ao 16. Se inscreva para participar de um dos times! ", "1.jpeg", CURDATE(), 1),
+(2, "Primeira etapa da seleção de duplas para o Ping-Pong", "A seleção de duplas para o Ping-Pong está começando e é a sua chance de mostrar que é o melhor! Seja ao lado do seu amigo ou de um novo parceiro, venha participar da nossa primeira etapa e se prepare para uma competição emocionante.", "2.jpeg", CURDATE(), 1),
+(3, "Ultima semana de inscrição para o time de vôlei", "Chegou a hora de fazer parte do nosso time de vôlei! A última semana de inscrições está aberta e estamos procurando por jogadores de todos os níveis e idades. Venha mostrar seu talento e se divertir com a gente em quadra. Garanta sua vaga agora e prepare-se para uma temporada incrível!", "3.jpeg", CURDATE(), 1);

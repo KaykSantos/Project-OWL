@@ -74,7 +74,7 @@ function CadastroPost($titulo, $conteudo, $imagem){
     $cd = $post['cd']+1;
 
     $dir = '../posts/images';
-    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$cd)){
+    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$cd.'.jpeg')){
 
         $query = 'INSERT INTO post VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$cd.'", CURDATE(), '.$_SESSION['userID'].')';
         $res = $GLOBALS['conn']->query($query);
@@ -95,7 +95,7 @@ function CadastroSelecao($titulo, $conteudo, $imagem){
     $cd = $post['cd']+1;
 
     $dir = '../inscricoes/images';
-    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$cd)){
+    if(move_uploaded_file($imagem['tmp_name'], $dir.'/'.$cd.'.jpeg')){
 
         $query = 'INSERT INTO selecao VALUES (null, "'.$titulo.'", "'.$conteudo.'", "'.$cd.'", CURDATE(), '.$_SESSION['userID'].')';
         $res = $GLOBALS['conn']->query($query);

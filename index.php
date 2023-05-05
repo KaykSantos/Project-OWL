@@ -50,9 +50,9 @@
         }
     ?>
     <main>
-        <!-- <form action="" method="post">
+        <form action="" method="post">
             <button name="sair">Sair</button>
-        </form> -->
+        </form>
         <?php
             $query = 'SELECT * FROM vwPostagem ORDER BY cd DESC';;
             $res = $GLOBALS['conn']->query($query);

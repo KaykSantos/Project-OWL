@@ -87,7 +87,7 @@
                                     <input type="number" value="'.$row['cd'].'" name="cd-selecao" hidden> 
                                 </div>
                                 <div>
-                                    <textarea name="content" id="conteudo-selecao" class="input" cols="30" rows="5" placeholder="Conteúdo da seleção: ">'.$row['conteudo'].'</textarea>
+                                    <textarea name="conteudo-selecao" id="conteudo-selecao" class="input" cols="30" rows="5" placeholder="Conteúdo da seleção: ">'.$row['conteudo'].'</textarea>
                                 </div>
                                 <div>
                                     <button name="submit-edit-selecao">Editar</button>

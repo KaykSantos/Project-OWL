@@ -56,6 +56,7 @@
     ?>
     <main>
         <div class="post-interclasse">
+            <h3>Lista de inscritos:</h3>
             <ul>
             <?php
                 if($_GET){
@@ -66,7 +67,7 @@
                         if($res){
                             foreach($res as $row){
                                 echo '
-                                    <li>RM: '.$row['id_aluno'].' - Nome: '.$row['nm_aluno'].'</li>
+                                    <li>RM: '.$row['id_aluno'].' - Nome: '.$row['nm_aluno'].' - <a href="../php/excluir.php?excluir='.$row['id_aluno'].'&selecao='.$row['id_selecao'].'">Excluir registro</a></li>
                                 ';
                             }
                         }
