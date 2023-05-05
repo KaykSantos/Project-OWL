@@ -1,12 +1,17 @@
 <?php
-    include('php/config.php');
+    include('../php/config.php');
 
+    // if($_POST){
+    //     if(isset($_POST['sair'])){
+    //         session_destroy();
+    //         header('Location: ../');
+    //     }        
+    // }
     if($_POST){
-        if(isset($_POST['sair'])){
-            session_destroy();
-            header('Location: ../');
-        }        
-    }    
+        if(isset($_POST['submit'])){
+            CadastroPost($_POST['titulo'], $_POST['content'], $_FILES['image']);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header id="header">
@@ -33,7 +38,7 @@
                 if(isset($_SESSION['log-fin'])){
                     echo '
                         <a href="../">Home</a>
-                        <a href="/inscricoes">Inscrições</a>
+                        <a href="#">Inscrições</a>
                     ';
                 }
             ?>
@@ -50,47 +55,38 @@
         }
     ?>
     <main>
-        <!-- <form action="" method="post">
-            <button name="sair">SAAAAAAAAAS</button>
-        </form> -->
+        
         <?php
-            $query = 'SELECT * FROM vwPostagem';;
+            $query = 'SELECT * FROM vwSelecao ORDER BY cd DESC';
             $res = $GLOBALS['conn']->query($query);
             if($res){
                 foreach($res as $row){
                     $dt_post = date('d/m/Y',  strtotime($row['dt_post']));
                     echo '
-                    <div class="container-post">
-                        <div class="img-post">
-                            <img src="posts/images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px" " height="250px" "    >
-                        </div>
-                        <div class="content-post">
-                            <h1>'.$row['titulo'].'</h1>
-                            
+                        
+                        <div class="post-interclasse">
+                            <h2>'.$row['titulo'].'</h2>
                             <p style="overflow: hidden; text-overflow: ellipsis;">
-                                '.$row['conteudo'].'
+                            '.$row['conteudo'].'
                             </p>
-                            <div class="footer-post">
-                                <h4><a href="posts/?post='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
-                                <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>
-                            </div>
-                            
+                            <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="400px">
+                            <br>
+                            <h4><a href="selecao/?selecao='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
                         </div>
-                    </div>
                     ';
                 }
             }
         ?>
+
+        <!-- <div class="post-interclasse">
+            <h2>Título</h2>
+            <p>Explicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonatoExplicação - Descrição do campeonato</p>
+            <img src="../images/logo.jpg" alt="Imagem do esporte" width="200px">
+            <button name="submit-participar">Participar</button>
+        </div> -->
     </main>
     <footer>
-            <h2>
-            © 2023 The OWL Company, all rights reserved.
-            </h2>
 
-            <div class="icon-contact">
-                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="images/instagram.png" width="40px"></a> 
-                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="images/gmail.png" width="60px"></a> 
-            </div>
     </footer>
 </body>
 </html>

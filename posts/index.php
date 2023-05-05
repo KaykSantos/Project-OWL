@@ -1,12 +1,16 @@
 <?php
-    include('php/config.php');
+    include('../php/config.php');
 
     if($_POST){
         if(isset($_POST['sair'])){
             session_destroy();
             header('Location: ../');
         }        
-    }    
+    }
+
+    
+    // echo "<h1>".$_SESSION['userID']."</h1>";
+        
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,7 +37,7 @@
                 if(isset($_SESSION['log-fin'])){
                     echo '
                         <a href="../">Home</a>
-                        <a href="/inscricoes">Inscrições</a>
+                        <a href="/interclasse">Interclasse</a>
                     ';
                 }
             ?>
@@ -43,7 +47,8 @@
         if(isset($_SESSION['adm'])){
             echo '
                     <div id="navbar">
-                        <a href="/new-post">New Post</a>
+                        <a href="../">Home</a>
+                        <a href="/new-post">New post</a>
                         <a href="/new-activity">New Activity</a>
                     </div>
                 ';
@@ -54,7 +59,8 @@
             <button name="sair">SAAAAAAAAAS</button>
         </form> -->
         <?php
-            $query = 'SELECT * FROM vwPostagem';;
+            $cdPost = $_GET['post'];
+            $query = 'SELECT * FROM vwPostagem WHERE cd = '.$cdPost.' ORDER BY cd DESC';
             $res = $GLOBALS['conn']->query($query);
             if($res){
                 foreach($res as $row){
@@ -62,19 +68,15 @@
                     echo '
                     <div class="container-post">
                         <div class="img-post">
-                            <img src="posts/images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px" " height="250px" "    >
+                            <img src="images/'.$row['imagem'].'" alt="'.$row['imagem'].'" width="370px"    >  
+                            <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>                
                         </div>
                         <div class="content-post">
-                            <h1>'.$row['titulo'].'</h1>
+                            <p class="titulo-post">'.$row['titulo'].'</p>
                             
-                            <p style="overflow: hidden; text-overflow: ellipsis;">
+                            <p>
                                 '.$row['conteudo'].'
                             </p>
-                            <div class="footer-post">
-                                <h4><a href="posts/?post='.$row['cd'].'" class="more-post">Ver mais...</a></h4>
-                                <h4>By '.$row['nm_adm'].' - Em: '.$dt_post.'</h4>
-                            </div>
-                            
                         </div>
                     </div>
                     ';
@@ -83,14 +85,7 @@
         ?>
     </main>
     <footer>
-            <h2>
-            © 2023 The OWL Company, all rights reserved.
-            </h2>
 
-            <div class="icon-contact">
-                <a href="https://www.instagram.com/organizacao_web_linguistica/"><img src="images/instagram.png" width="40px"></a> 
-                <a href="mailto:organizacaoweblinguistica@gmail.com"><img src="images/gmail.png" width="60px"></a> 
-            </div>
     </footer>
 </body>
 </html>
