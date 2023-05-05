@@ -76,7 +76,6 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
     /* position: relative; */
 }
 
@@ -84,7 +83,7 @@ footer{
     height: 80px;
     width: 100%;
     bottom: 0;
-    position: static;
+    position: fixed;
     background-color: #000000e8;
     color: white;
     display: flex;
@@ -115,6 +114,7 @@ footer .icon-contact{
     align-items: center;
     text-align: justify;
     padding: 25px;
+    margin-bottom: 60px;
 }
 
 .post-interclasse h2{
